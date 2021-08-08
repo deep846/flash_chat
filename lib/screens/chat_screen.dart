@@ -24,7 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getcurrentuser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = _auth.currentUser;
       if (user != null) {
         loginuseremail = user.email;
         print(user.email);
@@ -183,7 +183,7 @@ class MassegeBubble extends StatelessWidget {
         crossAxisAlignment: isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           // var time =
-          Text('$sender ${DateFormat("MMM d, hh:mm aa").format(DateTime.now())}',style: TextStyle(
+          Text('$sender , ${DateFormat("MMM d , hh:mm aa").format(DateTime.now())}',style: TextStyle(
             fontSize: 12.0,
             color: Colors.black54,
           ),),
