@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           _firestore.collection('messages').add({
                             'text': messages,
                             'sender': loginuseremail,
-                            'time': FieldValue.serverTimestamp()
+                            'time': FieldValue.serverTimestamp(),
                           });
                           messages = null;
                         }
@@ -182,11 +182,13 @@ class MassegeBubble extends StatelessWidget {
       child: Column(
         crossAxisAlignment: isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
-          // var time =
-          Text('$sender , ${DateFormat("MMM d , hh:mm aa").format(DateTime.now())}',style: TextStyle(
+          time!=null?Text('$sender , ${DateFormat("MMM d , hh:mm aa").format(DateTime.fromMillisecondsSinceEpoch(time.seconds * 1000))}',style: TextStyle(
             fontSize: 12.0,
             color: Colors.black54,
-          ),),
+          ),) : Text('$sender',style: TextStyle(
+    fontSize: 12.0,
+    color: Colors.black54,
+    ),),
           Material(
             borderRadius: isme ? BorderRadius.only(bottomLeft: Radius.circular( 30.0), bottomRight: Radius.circular( 30.0), topLeft: Radius.circular( 30.0),) :BorderRadius.only(bottomLeft: Radius.circular( 30.0), bottomRight: Radius.circular( 30.0), topRight: Radius.circular( 30.0),)  ,
             elevation: 5.0,
